@@ -37,7 +37,7 @@ import seedu.address.model.ModelManager;
         }
 
         /**
-         * Asserts that the result message from the execution of {@code historyCommand} equals to {@code expectedMessage}
+         * Asserts that the result message from the execution of {@code clearHistoryCommand} equals to {@code expectedMessage}
          */
         private void assertCommandResult(ClearHistoryCommand clearHistoryCommand, String expectedMessage) {
             assertEquals(expectedMessage, clearHistoryCommand.execute().feedbackToUser);
