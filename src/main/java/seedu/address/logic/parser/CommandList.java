@@ -18,7 +18,7 @@ import seedu.address.logic.commands.SelectCommand;
 import seedu.address.logic.commands.UndoCommand;
 
 /**
- * Contains the list of commands
+ * Contains the list of commands.
  */
 public class CommandList {
 
