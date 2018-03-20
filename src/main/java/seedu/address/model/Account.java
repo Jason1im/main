@@ -2,6 +2,7 @@ package seedu.address.model;
 
 
 
+
 import seedu.address.model.exceptions.InvalidPasswordException;
 import seedu.address.model.exceptions.InvalidUsernameException;
 
@@ -20,6 +21,11 @@ public class Account {
         return password;
     }
 
+    /**
+     * @return true if both inputs are valid.
+     * @throws InvalidUsernameException if inputUsername is not found.
+     * @throws InvalidPasswordException if inputPassword is incorrect for the inputUsername.
+     */
     public boolean identify(String inputUsername, String inputPassword) throws InvalidUsernameException,
             InvalidPasswordException {
         if (!this.username.equals(inputUsername)) {

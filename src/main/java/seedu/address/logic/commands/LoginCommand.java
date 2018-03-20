@@ -7,6 +7,7 @@ import seedu.address.model.exceptions.InvalidUsernameException;
 import seedu.address.model.exceptions.MultipleLoginException;
 
 
+
 import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PASSWORD;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_USERNAME;
