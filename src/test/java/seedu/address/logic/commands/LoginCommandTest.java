@@ -8,6 +8,7 @@ import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
 
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
@@ -67,11 +68,11 @@ public class LoginCommandTest {
      * Executes a {@code LoginCommand} and checks that a {@code CommandException}
      * is thrown with the {@code expectedMessage}.
      */
-    public void assertExecutionFailure( LoginCommand command, String expectedMessage) {
+    public void assertExecutionFailure(LoginCommand command, String expectedMessage) {
         try {
             command.execute();
             fail("The expected CommandException was not thrown.");
-        } catch ( CommandException ce) {
+        } catch (CommandException ce) {
             assertEquals(ce.getMessage(), expectedMessage);
         }
     }
