@@ -7,10 +7,10 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
-import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
+import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
 
 
 /**
