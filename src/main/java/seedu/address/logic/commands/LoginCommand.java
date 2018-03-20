@@ -2,15 +2,19 @@ package seedu.address.logic.commands;
 
 import seedu.address.commons.core.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
-import seedu.address.model.exceptions.MultipleLoginException;
 import seedu.address.model.exceptions.InvalidPasswordException;
 import seedu.address.model.exceptions.InvalidUsernameException;
+import seedu.address.model.exceptions.MultipleLoginException;
+
 
 import static java.util.Objects.requireNonNull;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_USERNAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PASSWORD;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_USERNAME;
 
-public class LoginCommand extends Command{
+/**
+ * Logs the user into contactHeRo.
+ */
+public class LoginCommand extends Command {
     public static final String COMMAND_WORD = "login";
 
     public static final String COMMAND_SYNTAX = COMMAND_WORD + " "
@@ -21,7 +25,7 @@ public class LoginCommand extends Command{
             + "Parameters: "
             + PREFIX_USERNAME + "USERNAME "
             + PREFIX_PASSWORD + "PASSWORD\n"
-            + "Example: " + COMMAND_WORD+ " "
+            + "Example: " + COMMAND_WORD + " "
             + PREFIX_USERNAME + "JohnDoe "
             + PREFIX_PASSWORD + "98765432 ";
     public static final String MESSAGE_SUCCESS = "You have successfully login as %1$s";

@@ -60,7 +60,8 @@ public interface Model {
      * @throws InvalidPasswordException if the password is invalid.
      * @throws MultipleLoginException if a user is already logged in.
      */
-    void login(String username, String password) throws InvalidUsernameException, InvalidPasswordException, MultipleLoginException;
+    void login(String username, String password) throws InvalidUsernameException,
+                                    InvalidPasswordException, MultipleLoginException;
 
     /**
      * Logs the user out of contactHeRo

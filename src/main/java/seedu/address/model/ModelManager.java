@@ -36,36 +36,6 @@ public class ModelManager extends ComponentManager implements Model {
     private final Account account; // manages the user
 
     /**
-     * Logs the user into the system.
-     * @throws InvalidUsernameException
-     * @throws InvalidPasswordException
-     * @throws MultipleLoginException
-     */
-    @Override
-    public void login(String username, String password) throws InvalidUsernameException, InvalidPasswordException, MultipleLoginException {
-        if( user.isPresent()) {
-            throw new MultipleLoginException();
-        } else {
-            requireNonNull(account);
-            account.identify(username, password);
-            user = user.of(username);
-        }
-    }
-
-    /**
-     * Logs the user out of the system.
-     * @throws UserLogoutException
-     */
-    @Override
-    public void logout() throws UserLogoutException {
-        if(user.isPresent()) {
-            user = user.empty();
-        } else {
-            throw new UserLogoutException();
-        }
-    }
-
-    /**
      * Initializes a ModelManager with the given addressBook and userPrefs.
      */
     public ModelManager(ReadOnlyAddressBook addressBook, UserPrefs userPrefs) {
@@ -126,6 +96,37 @@ public class ModelManager extends ComponentManager implements Model {
             throws PersonNotFoundException, DuplicatePersonException, UniqueTagList.DuplicateTagException {
         addressBook.removeTag(t);
         indicateAddressBookChanged();
+    }
+
+    /**
+     * Logs the user into the system.
+     * @throws InvalidUsernameException
+     * @throws InvalidPasswordException
+     * @throws MultipleLoginException
+     */
+    @Override
+    public void login(String username, String password)
+            throws InvalidUsernameException, InvalidPasswordException, MultipleLoginException {
+        if (user.isPresent()) {
+            throw new MultipleLoginException();
+        } else {
+            requireNonNull(account);
+            account.identify(username, password);
+            user = user.of(username);
+        }
+    }
+
+    /**
+     * Logs the user out of the system.
+     * @throws UserLogoutException
+     */
+    @Override
+    public void logout() throws UserLogoutException {
+        if (user.isPresent()) {
+            user = user.empty();
+        } else {
+            throw new UserLogoutException();
+        }
     }
 
     //=========== Filtered Person List Accessors =============================================================

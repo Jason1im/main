@@ -5,7 +5,10 @@ import seedu.address.model.exceptions.UserLogoutException;
 
 import static java.util.Objects.requireNonNull;
 
-public class LogoutCommand extends Command{
+/**
+ * Logs the user out of contactHeRo.
+ */
+public class LogoutCommand extends Command {
     public static final String COMMAND_WORD = "logout";
     public static final String MESSAGE_SUCCESS = "You have logout successfully!";
     public static final String MESSAGE_MULTIPLE_LOGOUT = "You have already logout.";

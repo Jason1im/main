@@ -1,6 +1,7 @@
 package seedu.address.model;
 
 
+
 import seedu.address.model.exceptions.InvalidPasswordException;
 import seedu.address.model.exceptions.InvalidUsernameException;
 
