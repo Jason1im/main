@@ -3,9 +3,9 @@ package seedu.address.logic.parser;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.commands.CommandTestUtil.PASSWORD_DESC_USER;
 import static seedu.address.logic.commands.CommandTestUtil.PREAMBLE_WHITESPACE;
-import static seedu.address.logic.commands.CommandTestUtil.USERNAME_DESC_USER;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_USERNAME_USER;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_PASSWORD_USER;
+import static seedu.address.logic.commands.CommandTestUtil.USERNAME_DESC_USER;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_USERNAME;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;
@@ -36,7 +36,7 @@ public class SignupCommandParserTest {
                 + VALID_PASSWORD_USER, expectedMessage);
 
         // Missing username
-        assertParseFailure(parser, PREAMBLE_WHITESPACE + PREFIX_USERNAME +PASSWORD_DESC_USER, expectedMessage);
+        assertParseFailure(parser, PREAMBLE_WHITESPACE + PREFIX_USERNAME + PASSWORD_DESC_USER, expectedMessage);
 
         // Missing password
         assertParseFailure(parser, PREAMBLE_WHITESPACE + USERNAME_DESC_USER, expectedMessage);
