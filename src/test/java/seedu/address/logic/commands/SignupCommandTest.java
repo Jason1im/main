@@ -98,5 +98,5 @@ public class SignupCommandTest {
         command.setData(model, new CommandHistory(), new UndoRedoStack());
         return command;
     }
-    
+
 }
