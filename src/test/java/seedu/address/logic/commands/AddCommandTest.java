@@ -164,7 +164,7 @@ public class AddCommandTest {
         }
 
         @Override
-        public void register(String username, String password){
+        public void register(String username, String password) {
             fail("This method should not be called.");
         }
 
