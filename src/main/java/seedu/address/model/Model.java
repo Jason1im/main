@@ -52,6 +52,11 @@ public interface Model {
     void updateFilteredPersonList(Predicate<Person> predicate);
 
     /**
+     * Returns AccountsManager.
+     */
+    AccountsManager getAccountsManager();
+
+    /**
      * Register a new account for user.
      * @throws DuplicateUsernameException if {@param username} is already in used.
      */

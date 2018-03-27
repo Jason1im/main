@@ -12,9 +12,7 @@ import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSucces
 
 import org.junit.Test;
 
-import seedu.address.logic.commands.LoginCommand;
 import seedu.address.logic.commands.SignupCommand;
-import seedu.address.model.Account;
 
 
 public class SignupCommandParserTest {
@@ -23,7 +21,7 @@ public class SignupCommandParserTest {
     @Test
     public void parse_allFieldsPresent_success() {
         assertParseSuccess(parser, PREAMBLE_WHITESPACE + USERNAME_DESC_USER
-                + PASSWORD_DESC_USER, new SignupCommand("JohnDoe", "12345"));
+                + PASSWORD_DESC_USER, new SignupCommand("John", "1234"));
     }
 
     @Test

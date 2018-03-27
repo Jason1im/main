@@ -25,7 +25,7 @@ public class SignupCommandTest {
 
     @Before
     public void setUp() {
-        model = new ModelManager(getTypicalAddressBook(), new UserPrefs(), new AccountsManager());
+        model = new ModelManager(getTypicalAddressBook(), new UserPrefs());
     }
 
 

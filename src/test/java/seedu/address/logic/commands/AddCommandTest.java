@@ -18,6 +18,7 @@ import javafx.collections.ObservableList;
 import seedu.address.logic.CommandHistory;
 import seedu.address.logic.UndoRedoStack;
 import seedu.address.logic.commands.exceptions.CommandException;
+import seedu.address.model.AccountsManager;
 import seedu.address.model.AddressBook;
 import seedu.address.model.Model;
 import seedu.address.model.ReadOnlyAddressBook;
@@ -140,7 +141,17 @@ public class AddCommandTest {
         public void updateFilteredPersonList(Predicate<Person> predicate) {
             fail("This method should not be called.");
         }
+
+        @Override
+        public AccountsManager getAccountsManager() {
+            fail("This method should not be called.");
+            return null;
+        }
+
+        @Override
+        public void register(String username, String password){ fail("This method should not be called."); }
     }
+
 
     /**
      * A Model stub that always throw a DuplicatePersonException when trying to add a person.
