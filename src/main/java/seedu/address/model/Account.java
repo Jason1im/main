@@ -27,7 +27,7 @@ public final class Account {
     /**
      * @param newUsername should not be null
      */
-    public void updateUsername( String newUsername) {
+    public void updateUsername(String newUsername) {
         username = newUsername;
     }
 
