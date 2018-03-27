@@ -18,8 +18,8 @@ import javafx.collections.ObservableList;
 import seedu.address.logic.CommandHistory;
 import seedu.address.logic.UndoRedoStack;
 import seedu.address.logic.commands.exceptions.CommandException;
-import seedu.address.model.AccountsManager;
 import seedu.address.logic.commands.person.AddCommand;
+import seedu.address.model.AccountsManager;
 import seedu.address.model.AddressBook;
 import seedu.address.model.Model;
 import seedu.address.model.ReadOnlyAddressBook;
@@ -163,7 +163,9 @@ public class AddCommandTest {
         }
 
         @Override
-        public void register(String username, String password){ fail("This method should not be called."); }
+        public void register(String username, String password){ 
+            fail("This method should not be called."); 
+        }
 
         @Override
         public void updateFilteredJobList(Predicate<Job> predicate) {
