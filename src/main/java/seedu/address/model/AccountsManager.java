@@ -1,14 +1,15 @@
 package seedu.address.model;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import seedu.address.commons.util.CollectionUtil;
-import seedu.address.model.exception.DuplicateUsernameException;
+import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.util.Objects;
 
-import static java.util.Objects.requireNonNull;
-import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
+import seedu.address.commons.util.CollectionUtil;
+import seedu.address.model.exception.DuplicateUsernameException;
+
 
 /**
  * Represents a database of registered user accounts
@@ -21,20 +22,25 @@ public class AccountsManager implements ReadOnlyAccountsManager {
         accountList = FXCollections.observableArrayList();
     }
 
-    public boolean checkUsername( String username, Account account) {
+    public boolean checkUsername(String username, Account account) {
         return account.getUsername().equals(username);
     }
 
-    public boolean checkPassword( String password, Account account) {
+    public boolean checkPassword(String password, Account account) {
         return account.getPassword().equals(password);
     }
-
+    
+    /**
+    * adds a new account to the list of registered accounts.
+    * @throws DuplicateUsernameException if the username is already used
+    */
     public void register(String inputUsername, String inputPassword) throws DuplicateUsernameException {
         requireAllNonNull(inputUsername, inputPassword);
-        if(!accountList.isEmpty()) {
+        if (!accountList.isEmpty()) {
             for (Account acc : accountList) {
-                if (checkUsername(inputUsername, acc))
+                if (checkUsername(inputUsername, acc)) {
                     throw new DuplicateUsernameException();
+                }
             }
         }
         Account newAccount = new Account(inputUsername, inputPassword);
