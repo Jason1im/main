@@ -139,6 +139,7 @@ public class AddCommandTest {
                 throws PersonNotFoundException, DuplicatePersonException, UniqueTagList.DuplicateTagException {
             fail("This method should not be called.");
         }
+
         @Override
         public ObservableList<Person> getFilteredPersonList() {
             fail("This method should not be called.");
@@ -163,8 +164,8 @@ public class AddCommandTest {
         }
 
         @Override
-        public void register(String username, String password){ 
-            fail("This method should not be called."); 
+        public void register(String username, String password){
+            fail("This method should not be called.");
         }
 
         @Override
