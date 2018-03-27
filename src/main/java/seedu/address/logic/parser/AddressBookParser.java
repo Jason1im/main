@@ -21,6 +21,7 @@ import seedu.address.logic.commands.LinkedInCommand;
 import seedu.address.logic.commands.ListCommand;
 import seedu.address.logic.commands.RedoCommand;
 import seedu.address.logic.commands.SelectCommand;
+import seedu.address.logic.commands.SignupCommand;
 import seedu.address.logic.commands.UndoCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 
@@ -95,6 +96,9 @@ public class AddressBookParser {
 
         case EmailCommand.COMMAND_WORD:
             return new EmailCommandParser().parse(arguments);
+
+        case SignupCommand.COMMAND_WORD:
+            return new SignupCommandParser().parse(arguments);
 
         default:
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);

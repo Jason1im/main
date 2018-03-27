@@ -3,6 +3,7 @@ package seedu.address.model;
 import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;
+import seedu.address.model.exception.DuplicateUsernameException;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.exceptions.DuplicatePersonException;
 import seedu.address.model.person.exceptions.PersonNotFoundException;
@@ -50,4 +51,14 @@ public interface Model {
      */
     void updateFilteredPersonList(Predicate<Person> predicate);
 
+    /**
+     * Returns AccountsManager.
+     */
+    AccountsManager getAccountsManager();
+
+    /**
+     * Register a new account for user.
+     * @throws DuplicateUsernameException if {@param username} is already in used.
+     */
+    void register(String username, String password) throws DuplicateUsernameException;
 }

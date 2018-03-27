@@ -3,6 +3,7 @@ package seedu.address.model;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
+import java.util.Optional;
 import java.util.function.Predicate;
 import java.util.logging.Logger;
 
@@ -12,6 +13,7 @@ import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.ComponentManager;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.events.model.AddressBookChangedEvent;
+import seedu.address.model.exception.DuplicateUsernameException;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.exceptions.DuplicatePersonException;
 import seedu.address.model.person.exceptions.PersonNotFoundException;
@@ -27,6 +29,8 @@ public class ModelManager extends ComponentManager implements Model {
 
     private final AddressBook addressBook;
     private final FilteredList<Person> filteredPersons;
+    private Optional<Account> user; //tracks the current user
+    private AccountsManager accountsManager;
 
     /**
      * Initializes a ModelManager with the given addressBook and userPrefs.
@@ -39,6 +43,8 @@ public class ModelManager extends ComponentManager implements Model {
 
         this.addressBook = new AddressBook(addressBook);
         filteredPersons = new FilteredList<>(this.addressBook.getPersonList());
+        accountsManager = new AccountsManager();
+        user = Optional.empty();
     }
 
     public ModelManager() {
@@ -87,6 +93,16 @@ public class ModelManager extends ComponentManager implements Model {
             throws PersonNotFoundException, DuplicatePersonException, UniqueTagList.DuplicateTagException {
         addressBook.removeTag(t);
         indicateAddressBookChanged();
+    }
+
+    @Override
+    public AccountsManager getAccountsManager() {
+        return accountsManager;
+    }
+
+    @Override
+    public void register(String username, String password) throws DuplicateUsernameException {
+        accountsManager.register(username, password);
     }
 
     //=========== Filtered Person List Accessors =============================================================
