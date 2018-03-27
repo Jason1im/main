@@ -20,6 +20,8 @@ import seedu.address.logic.commands.EmailCommand;
 import seedu.address.logic.commands.ExitCommand;
 import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.HistoryCommand;
+import seedu.address.logic.commands.LoginCommand;
+import seedu.address.logic.commands.LogoutCommand;
 import seedu.address.logic.commands.RedoCommand;
 import seedu.address.logic.commands.SignupCommand;
 import seedu.address.logic.commands.UndoCommand;
@@ -118,6 +120,21 @@ public class AddressBookParserTest {
     public void parseCommand_list() throws Exception {
         assertTrue(parser.parseCommand(ListCommand.COMMAND_WORD) instanceof ListCommand);
         assertTrue(parser.parseCommand(ListCommand.COMMAND_WORD + " 3") instanceof ListCommand);
+    }
+
+    @Test
+    public void parseCommand_login() throws Exception {
+        String username = "John";
+        String password = "123";
+        LoginCommand command = (LoginCommand) parser.parseCommand(LoginCommand.COMMAND_WORD
+                + " u/" + username + " pw/" + password);
+        assertEquals(new LoginCommand(username, password), command);
+    }
+
+    @Test
+    public void parseCommand_logout() throws Exception {
+        assertTrue(parser.parseCommand(LogoutCommand.COMMAND_WORD) instanceof LogoutCommand);
+        assertTrue(parser.parseCommand(LogoutCommand.COMMAND_WORD + " 3") instanceof LogoutCommand);
     }
 
     @Test
