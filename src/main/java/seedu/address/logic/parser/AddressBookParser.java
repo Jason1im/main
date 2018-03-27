@@ -108,7 +108,7 @@ public class AddressBookParser {
 
         case SignupCommand.COMMAND_WORD:
             return new SignupCommandParser().parse(arguments);
-            
+
         case JobAddCommand.COMMAND_WORD:
             return new JobAddCommandParser().parse(arguments);
 
