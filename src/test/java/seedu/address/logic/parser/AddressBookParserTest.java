@@ -30,8 +30,10 @@ import seedu.address.logic.commands.LinkedInCommand;
 import seedu.address.logic.commands.ListCommand;
 import seedu.address.logic.commands.RedoCommand;
 import seedu.address.logic.commands.SelectCommand;
+import seedu.address.logic.commands.SignupCommand;
 import seedu.address.logic.commands.UndoCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.Account;
 import seedu.address.model.person.NameContainsKeywordsPredicate;
 import seedu.address.model.person.Person;
 import seedu.address.testutil.EditPersonDescriptorBuilder;
@@ -143,6 +145,15 @@ public class AddressBookParserTest {
     public void parseCommand_redoCommandWord_returnsRedoCommand() throws Exception {
         assertTrue(parser.parseCommand(RedoCommand.COMMAND_WORD) instanceof RedoCommand);
         assertTrue(parser.parseCommand("redo 1") instanceof RedoCommand);
+    }
+
+    @Test
+    public void parseCommand_SignupCommandWord_returnsSignupCommand() throws Exception {
+        String testUsername = "test";
+        String testPassword = "123";
+        SignupCommand command = (SignupCommand) parser.parseCommand(
+                SignupCommand.COMMAND_WORD + " u/" + testUsername + " pw/" + testPassword);
+        assertEquals(new SignupCommand(testUsername, testPassword), command);
     }
 
     @Test

@@ -3,6 +3,14 @@ package seedu.address.model;
 import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;
+<<<<<<< 14cad067fbe84e9fbf36c4da0d59f6ae3085ec71
+=======
+import seedu.address.model.exceptions.DuplicateUsernameException;
+import seedu.address.model.exceptions.InvalidPasswordException;
+import seedu.address.model.exceptions.InvalidUsernameException;
+import seedu.address.model.exceptions.MultipleLoginException;
+import seedu.address.model.exceptions.UserLogoutException;
+>>>>>>> Added new SignupCommand and implemented Account Class and AccountsManager Class.
 import seedu.address.model.person.Person;
 import seedu.address.model.person.exceptions.DuplicatePersonException;
 import seedu.address.model.person.exceptions.PersonNotFoundException;
@@ -50,4 +58,9 @@ public interface Model {
      */
     void updateFilteredPersonList(Predicate<Person> predicate);
 
+    /**
+     * Register a new account for user.
+     * @throws DuplicateUsernameException if {@param username} is already in used.
+     */
+    void register(String username, String password) throws DuplicateUsernameException;
 }
