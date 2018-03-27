@@ -180,7 +180,7 @@ public class AddCommandTest {
         public void addPerson(Person person) throws DuplicatePersonException {
             throw new DuplicatePersonException();
         }
-
+        
         @Override
         public ReadOnlyAddressBook getAddressBook() {
             return new AddressBook();
