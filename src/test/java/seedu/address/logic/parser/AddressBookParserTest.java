@@ -33,6 +33,7 @@ import seedu.address.logic.commands.person.LinkedInCommand;
 import seedu.address.logic.commands.person.ListCommand;
 import seedu.address.logic.commands.person.SelectCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.Account;
 import seedu.address.model.person.NameContainsKeywordsPredicate;
 import seedu.address.model.person.Person;
 import seedu.address.testutil.EditPersonDescriptorBuilder;

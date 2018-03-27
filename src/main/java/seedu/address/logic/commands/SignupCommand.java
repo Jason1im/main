@@ -5,7 +5,11 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_PASSWORD;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_USERNAME;
 
 import seedu.address.logic.commands.exceptions.CommandException;
+<<<<<<< f037e10e634d121cefed430cc69e1ce766539541
 import seedu.address.model.exception.DuplicateUsernameException;
+=======
+import seedu.address.model.exceptions.DuplicateUsernameException;
+>>>>>>> Added new SignupCommand and implemented Account Class and AccountsManager Class.
 
 /**
  * Register a new account for the user.
