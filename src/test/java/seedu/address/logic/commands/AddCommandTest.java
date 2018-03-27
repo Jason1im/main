@@ -164,7 +164,7 @@ public class AddCommandTest {
 
         @Override
         public void register(String username, String password){ fail("This method should not be called."); }
- 
+
         @Override
         public void updateFilteredJobList(Predicate<Job> predicate) {
             fail("This method should not be called.");
