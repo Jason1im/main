@@ -108,7 +108,7 @@ public class ModelManager extends ComponentManager implements Model {
     public void register(String username, String password) throws DuplicateUsernameException {
         accountsManager.register(username, password);
     }
-      
+    
     @Override
     public synchronized void addJob(Job job) throws DuplicateJobException {
         addressBook.addJob(job);
