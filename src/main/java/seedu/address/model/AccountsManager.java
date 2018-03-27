@@ -29,7 +29,7 @@ public class AccountsManager implements ReadOnlyAccountsManager {
     public boolean checkPassword(String password, Account account) {
         return account.getPassword().equals(password);
     }
-    
+
     /**
     * adds a new account to the list of registered accounts.
     * @throws DuplicateUsernameException if the username is already used
