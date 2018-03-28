@@ -3,10 +3,12 @@ package seedu.address.model;
 import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;
-import seedu.address.model.exception.DuplicateUsernameException;
 import seedu.address.model.job.Job;
 import seedu.address.model.job.exceptions.DuplicateJobException;
 import seedu.address.model.exception.DuplicateUsernameException;
+import seedu.address.model.exception.InvalidPasswordException;
+import seedu.address.model.exception.InvalidUsernameException;
+import seedu.address.model.exception.MultipleLoginException;
 import seedu.address.model.exception.InvalidPasswordException;
 import seedu.address.model.exception.InvalidUsernameException;
 import seedu.address.model.exception.MultipleLoginException;
@@ -60,9 +62,25 @@ public interface Model {
     void updateFilteredPersonList(Predicate<Person> predicate);
 
     /**
+<<<<<<< ddc9dcde3dcff3b2a72f4495842054ab6868439a
      * Returns AccountsManager.
      */
     AccountsManager getAccountsManager();
+=======
+     * Logs the user into contactHeRo.
+     * @throws InvalidUsernameException if username is invalid.
+     * @throws InvalidPasswordException if the password is invalid.
+     * @throws MultipleLoginException if a user is already logged in.
+     */
+    void login(String username, String password) throws InvalidUsernameException,
+            InvalidPasswordException, MultipleLoginException;
+
+    /**
+     * Logs the user out of contactHeRo
+     * @throws UserLogoutException if no user is login to the system.
+     */
+    void logout() throws UserLogoutException;
+>>>>>>> add exceptions
 
     /**
      * Register a new account for user.
