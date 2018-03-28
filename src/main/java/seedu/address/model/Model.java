@@ -9,9 +9,6 @@ import seedu.address.model.exception.DuplicateUsernameException;
 import seedu.address.model.exception.InvalidPasswordException;
 import seedu.address.model.exception.InvalidUsernameException;
 import seedu.address.model.exception.MultipleLoginException;
-import seedu.address.model.exception.InvalidPasswordException;
-import seedu.address.model.exception.InvalidUsernameException;
-import seedu.address.model.exception.MultipleLoginException;
 import seedu.address.model.exception.UserLogoutException;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.exceptions.DuplicatePersonException;
@@ -62,11 +59,11 @@ public interface Model {
     void updateFilteredPersonList(Predicate<Person> predicate);
 
     /**
-<<<<<<< ddc9dcde3dcff3b2a72f4495842054ab6868439a
      * Returns AccountsManager.
      */
     AccountsManager getAccountsManager();
-=======
+
+    /**
      * Logs the user into contactHeRo.
      * @throws InvalidUsernameException if username is invalid.
      * @throws InvalidPasswordException if the password is invalid.
@@ -80,7 +77,6 @@ public interface Model {
      * @throws UserLogoutException if no user is login to the system.
      */
     void logout() throws UserLogoutException;
->>>>>>> add exceptions
 
     /**
      * Register a new account for user.
