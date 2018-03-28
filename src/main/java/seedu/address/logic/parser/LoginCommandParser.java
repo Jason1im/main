@@ -39,6 +39,6 @@ public class LoginCommandParser implements Parser<LoginCommand> {
     * {@code ArgumentMultimap}.
     */
     private static boolean arePrefixesPresent(ArgumentMultimap argumentMultimap, Prefix... prefixes) {
-        return Stream.of(prefixes).allMatch(prefix > argumentMultimap.getValue(prefix).isPresent());
+        return Stream.of(prefixes).allMatch(prefix -> argumentMultimap.getValue(prefix).isPresent());
     }
 }

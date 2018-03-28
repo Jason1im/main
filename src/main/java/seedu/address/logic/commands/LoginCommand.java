@@ -1,16 +1,16 @@
 package seedu.address.logic.commands;
 
-        import static java.util.Objects.requireNonNull;
+import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PASSWORD;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_USERNAME;
 
-        import seedu.address.commons.core.Messages;
+import seedu.address.commons.core.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
-import seedu.address.model.exceptions.InvalidPasswordException;
-import seedu.address.model.exceptions.InvalidUsernameException;
-import seedu.address.model.exceptions.MultipleLoginException;
+import seedu.address.model.exception.InvalidPasswordException;
+import seedu.address.model.exception.InvalidUsernameException;
+import seedu.address.model.exception.MultipleLoginException;
 
-        /**
+ /**
   * Logs the user into contactHeRo.
   */
         public class LoginCommand extends Command {

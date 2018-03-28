@@ -13,16 +13,13 @@ import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.ComponentManager;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.events.model.AddressBookChangedEvent;
-<<<<<<< ddc9dcde3dcff3b2a72f4495842054ab6868439a
-import seedu.address.model.exception.DuplicateUsernameException;
 import seedu.address.model.job.Job;
 import seedu.address.model.job.exceptions.DuplicateJobException;
-=======
+import seedu.address.model.exception.DuplicateUsernameException;
 import seedu.address.model.exception.InvalidPasswordException;
 import seedu.address.model.exception.InvalidUsernameException;
 import seedu.address.model.exception.MultipleLoginException;
 import seedu.address.model.exception.UserLogoutException;
->>>>>>> add exceptions
 import seedu.address.model.person.Person;
 import seedu.address.model.person.exceptions.DuplicatePersonException;
 import seedu.address.model.person.exceptions.PersonNotFoundException;
@@ -38,14 +35,9 @@ public class ModelManager extends ComponentManager implements Model {
 
     private final AddressBook addressBook;
     private final FilteredList<Person> filteredPersons;
-<<<<<<< ddc9dcde3dcff3b2a72f4495842054ab6868439a
     private Optional<Account> user; //tracks the current user
     private AccountsManager accountsManager;
     private final FilteredList<Job> filteredJobs;
-=======
-    private Optional<Account> user; // tracks current user
-    private final AccountsManager accountsManager; // manages the user
->>>>>>> add exceptions
 
     /**
      * Initializes a ModelManager with the given addressBook and userPrefs.
@@ -58,15 +50,10 @@ public class ModelManager extends ComponentManager implements Model {
 
         this.addressBook = new AddressBook(addressBook);
         filteredPersons = new FilteredList<>(this.addressBook.getPersonList());
-<<<<<<< ddc9dcde3dcff3b2a72f4495842054ab6868439a
-        accountsManager = new AccountsManager();
         user = Optional.empty();
         filteredJobs = new FilteredList<>(this.addressBook.getJobList());
-=======
         this.accountsManager = new AccountsManager();
         this.user = Optional.empty();
-
->>>>>>> add exceptions
     }
 
     public ModelManager() {
@@ -116,18 +103,6 @@ public class ModelManager extends ComponentManager implements Model {
         addressBook.removeTag(t);
         indicateAddressBookChanged();
     }
-
-    @Override
-<<<<<<< ddc9dcde3dcff3b2a72f4495842054ab6868439a
-    public AccountsManager getAccountsManager() {
-        return accountsManager;
-    }
-
-    @Override
-    public void register(String username, String password) throws DuplicateUsernameException {
-        accountsManager.register(username, password);
-    }
-
     @Override
     public synchronized void addJob(Job job) throws DuplicateJobException {
         addressBook.addJob(job);
@@ -135,7 +110,7 @@ public class ModelManager extends ComponentManager implements Model {
         indicateAddressBookChanged();
     }
 
-=======
+    @Override
     public ReadOnlyAccountsManager getAccountsManager() {
         return accountsManager;
     }
@@ -175,8 +150,6 @@ public class ModelManager extends ComponentManager implements Model {
         accountsManager.register(username, password);
     }
 
-
->>>>>>> add exceptions
     //=========== Filtered Person List Accessors =============================================================
 
     /**
