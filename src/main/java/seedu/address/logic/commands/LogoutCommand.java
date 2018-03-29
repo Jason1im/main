@@ -17,10 +17,10 @@ public class LogoutCommand extends Command {
     public CommandResult execute() throws CommandException {
         requireNonNull(model);
         try {
-                model.logout();
-                return new CommandResult(MESSAGE_SUCCESS);
-            } catch (UserLogoutException ule) {
-                throw new CommandException(MESSAGE_MULTIPLE_LOGOUT);
-            }
+            model.logout();
+            return new CommandResult(MESSAGE_SUCCESS);
+        } catch (UserLogoutException ule) {
+            throw new CommandException(MESSAGE_MULTIPLE_LOGOUT);
+        }
     }
 }

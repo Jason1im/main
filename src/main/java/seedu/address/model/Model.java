@@ -3,13 +3,13 @@ package seedu.address.model;
 import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;
-import seedu.address.model.job.Job;
-import seedu.address.model.job.exceptions.DuplicateJobException;
 import seedu.address.model.exception.DuplicateUsernameException;
 import seedu.address.model.exception.InvalidPasswordException;
 import seedu.address.model.exception.InvalidUsernameException;
 import seedu.address.model.exception.MultipleLoginException;
 import seedu.address.model.exception.UserLogoutException;
+import seedu.address.model.job.Job;
+import seedu.address.model.job.exceptions.DuplicateJobException;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.exceptions.DuplicatePersonException;
 import seedu.address.model.person.exceptions.PersonNotFoundException;

@@ -20,18 +20,17 @@ public class LoginCommandParser implements Parser<LoginCommand> {
     * @throws ParseException if the user input does not conform the expected format
     */
     public LoginCommand parse(String args) throws ParseException {
+        ArgumentMultimap argMultimap =
+                ArgumentTokenizer.tokenize(args, PREFIX_USERNAME, PREFIX_PASSWORD);
 
-                ArgumentMultimap argMultimap =
-                        ArgumentTokenizer.tokenize(args, PREFIX_USERNAME, PREFIX_PASSWORD);
-
-                if (!arePrefixesPresent(argMultimap, PREFIX_USERNAME, PREFIX_PASSWORD)
-                        || !argMultimap.getPreamble().isEmpty()) {
-                throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, LoginCommand.MESSAGE_USAGE));
-            } else {
-                String inputUsername = argMultimap.getValue(PREFIX_USERNAME).get();
-                String inputPassword = argMultimap.getValue(PREFIX_PASSWORD).get();
-                return new LoginCommand(inputUsername, inputPassword);
-            }
+        if (!arePrefixesPresent(argMultimap, PREFIX_USERNAME, PREFIX_PASSWORD)
+                || !argMultimap.getPreamble().isEmpty()) {
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, LoginCommand.MESSAGE_USAGE));
+        } else {
+            String inputUsername = argMultimap.getValue(PREFIX_USERNAME).get();
+            String inputPassword = argMultimap.getValue(PREFIX_PASSWORD).get();
+            return new LoginCommand(inputUsername, inputPassword);
+        }
     }
 
     /**
