@@ -44,7 +44,7 @@ public class LoginCommandTest {
 
     @Test
     public void execute_loginSuccessful() throws Exception {
-       CommandResult commandResult = getLoginCommand(username, password, model).execute();
+        CommandResult commandResult = getLoginCommand(username, password, model).execute();
         assertEquals(String.format(LoginCommand.MESSAGE_SUCCESS, username),
                 commandResult.feedbackToUser);
     }
@@ -66,7 +66,7 @@ public class LoginCommandTest {
     }
 
     @Test
-    public void execute_MultipleLogin_throwsCommandException() throws Exception {
+    public void execute_multipleLogin_throwsCommandException() throws Exception {
         thrown.expect(CommandException.class);
         thrown.expectMessage(LoginCommand.MESSAGE_MULTIPLE_LOGIN);
         LoginCommand command = getLoginCommand(username, password, model);

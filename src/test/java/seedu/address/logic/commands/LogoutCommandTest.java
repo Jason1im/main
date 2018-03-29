@@ -51,7 +51,7 @@ public class LogoutCommandTest {
 
     public LogoutCommand getLogoutCommand(Model model) {
         LogoutCommand command = new LogoutCommand();
-        command.setData(model, new CommandHistory(),new UndoRedoStack());
+        command.setData(model, new CommandHistory(), new UndoRedoStack());
         return command;
     }
 }
