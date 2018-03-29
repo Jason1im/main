@@ -49,6 +49,12 @@ public class AccountsManager implements ReadOnlyAccountsManager {
         accountList.add(newAccount);
     }
 
+    /**
+     * Checks for validity of username and password.
+     * @return the user account that matches the inputs.
+     * @throws InvalidUsernameException if the input username cannot be found
+     * @throws InvalidPasswordException if the input password does not match with the username
+     */
     public Account login(String inputUsername, String inputPassword)
             throws InvalidUsernameException, InvalidPasswordException {
         requireAllNonNull(inputUsername, inputPassword);
