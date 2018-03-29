@@ -14,7 +14,7 @@ import org.junit.Test;
 
 import seedu.address.logic.commands.LoginCommand;
 
-public class LoginCommandTest {
+public class LoginCommandParserTest {
 
     private LoginCommandParser parser = new LoginCommandParser();
 
