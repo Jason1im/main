@@ -9,6 +9,8 @@ import javafx.collections.ObservableList;
 
 import seedu.address.commons.util.CollectionUtil;
 import seedu.address.model.exception.DuplicateUsernameException;
+import seedu.address.model.exception.InvalidPasswordException;
+import seedu.address.model.exception.InvalidUsernameException;
 
 
 /**
@@ -45,6 +47,28 @@ public class AccountsManager implements ReadOnlyAccountsManager {
         }
         Account newAccount = new Account(inputUsername, inputPassword);
         accountList.add(newAccount);
+    }
+
+    public Account login(String inputUsername, String inputPassword)
+            throws InvalidUsernameException, InvalidPasswordException {
+        requireAllNonNull(inputUsername, inputPassword);
+        Account result = null;
+        boolean isValidUsername = false;
+        for (Account acc : accountList) {
+            if (checkUsername(inputUsername, acc)) {
+                if (checkPassword(inputPassword, acc)) {
+                    isValidUsername = true;
+                    result = acc;
+                } else {
+                    throw new InvalidPasswordException();
+                }
+            }
+        }
+        if (isValidUsername) {
+            return result;
+        } else {
+            throw new InvalidUsernameException();
+        }
     }
 
     @Override

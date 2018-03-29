@@ -35,9 +35,9 @@ public class ModelManager extends ComponentManager implements Model {
 
     private final AddressBook addressBook;
     private final FilteredList<Person> filteredPersons;
-    private Optional<Account> user; //tracks the current user
-    private AccountsManager accountsManager;
     private final FilteredList<Job> filteredJobs;
+    private AccountsManager accountsManager;
+    private Optional<Account> user;
 
     /**
      * Initializes a ModelManager with the given addressBook and userPrefs.
@@ -50,7 +50,6 @@ public class ModelManager extends ComponentManager implements Model {
 
         this.addressBook = new AddressBook(addressBook);
         filteredPersons = new FilteredList<>(this.addressBook.getPersonList());
-        user = Optional.empty();
         filteredJobs = new FilteredList<>(this.addressBook.getJobList());
         this.accountsManager = new AccountsManager();
         this.user = Optional.empty();
@@ -128,7 +127,8 @@ public class ModelManager extends ComponentManager implements Model {
             throw new MultipleLoginException();
         } else {
             requireNonNull(accountsManager);
-            login(username, password);
+            Account user = accountsManager.login(username, password);
+            setUser(user);
         }
     }
 
@@ -139,10 +139,14 @@ public class ModelManager extends ComponentManager implements Model {
     @Override
     public void logout() throws UserLogoutException {
         if (user.isPresent()) {
-            user = user.empty();
+            setUser(null);
         } else {
             throw new UserLogoutException();
         }
+    }
+
+    private void setUser(Account account) {
+        user = user.ofNullable(account);
     }
 
     @Override

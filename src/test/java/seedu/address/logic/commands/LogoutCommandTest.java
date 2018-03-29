@@ -1,8 +1,6 @@
 package seedu.address.logic.commands;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
 import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
 
 import org.junit.Before;
@@ -17,7 +15,7 @@ import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
 
-public class LoginCommandTest {
+public class LogoutCommandTest {
 
     @Rule
     public ExpectedException thrown = ExpectedException.none();
@@ -38,7 +36,7 @@ public class LoginCommandTest {
 
     @Test
     public void execute_logoutSuccessful() throws Exception {
-        CommandResult commandResult = new LogoutCommand().execute();
+        CommandResult commandResult = getLogoutCommand(model).execute();
         assertEquals(LogoutCommand.MESSAGE_SUCCESS, commandResult.feedbackToUser);
     }
 
@@ -46,9 +44,14 @@ public class LoginCommandTest {
     public void execute_logoutFailure() throws Exception {
         thrown.expect(CommandException.class);
         thrown.expectMessage(LogoutCommand.MESSAGE_MULTIPLE_LOGOUT);
-
-        new LogoutCommand().execute();
-        new LogoutCommand().execute();
+        LogoutCommand command = getLogoutCommand(model);
+        command.execute();
+        command.execute();
     }
 
+    public LogoutCommand getLogoutCommand(Model model) {
+        LogoutCommand command = new LogoutCommand();
+        command.setData(model, new CommandHistory(),new UndoRedoStack());
+        return command;
+    }
 }
