@@ -121,6 +121,7 @@ public class AddressBookParserTest {
         assertTrue(parser.parseCommand(ListCommand.COMMAND_WORD + " 3") instanceof ListCommand);
     }
 
+    //@@author Jason1im
     @Test
     public void parseCommand_login() throws Exception {
         String username = "John";
@@ -136,6 +137,7 @@ public class AddressBookParserTest {
         assertTrue(parser.parseCommand(LogoutCommand.COMMAND_WORD + " 3") instanceof LogoutCommand);
     }
 
+    //@@author
     @Test
     public void parseCommand_select() throws Exception {
         SelectCommand command = (SelectCommand) parser.parseCommand(
@@ -163,6 +165,7 @@ public class AddressBookParserTest {
         assertTrue(parser.parseCommand("redo 1") instanceof RedoCommand);
     }
 
+    //@@author Jason1im
     @Test
     public void parseCommand_signupCommandWord_returnsSignupCommand() throws Exception {
         String testUsername = "test";
@@ -172,6 +175,7 @@ public class AddressBookParserTest {
         assertEquals(new SignupCommand(testUsername, testPassword), command);
     }
 
+    //@@author
     @Test
     public void parseCommand_undoCommandWord_returnsUndoCommand() throws Exception {
         assertTrue(parser.parseCommand(UndoCommand.COMMAND_WORD) instanceof UndoCommand);
