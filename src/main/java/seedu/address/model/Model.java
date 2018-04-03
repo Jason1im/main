@@ -58,6 +58,7 @@ public interface Model {
      */
     void updateFilteredPersonList(Predicate<Person> predicate);
 
+    //@@author Jason1im
     /**
      * Returns AccountsManager.
      */
@@ -84,6 +85,7 @@ public interface Model {
      */
     void register(String username, String password) throws DuplicateUsernameException;
 
+    //@@author
     /** Adds the given person */
     void addJob(Job job) throws DuplicateJobException;
 
