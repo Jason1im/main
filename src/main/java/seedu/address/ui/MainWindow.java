@@ -92,7 +92,7 @@ public class MainWindow extends UiPart<Stage> {
         registerAsAnEventHandler(this);
     }
 
-    // constructor for test purpose
+    // Constructor for test purpose
     public MainWindow(Stage primaryStage, Config config, UserPrefs prefs, Logic logic, int i) {
         super(FXML, primaryStage);
 
