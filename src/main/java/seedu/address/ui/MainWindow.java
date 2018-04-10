@@ -10,6 +10,7 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextInputControl;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.Region;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import seedu.address.commons.core.Config;
@@ -20,6 +21,7 @@ import seedu.address.commons.events.ui.LoginEvent;
 import seedu.address.commons.events.ui.ShowHelpRequestEvent;
 import seedu.address.logic.Logic;
 import seedu.address.model.UserPrefs;
+import seedu.address.model.Model;
 
 /**
  * The Main Window. Provides the basic application layout containing
@@ -253,7 +255,6 @@ public class MainWindow extends UiPart<Stage> {
     }
 
     //@@author Jason1im
-
     /**
      * Switches the fxml file loaded onto primaryStage
      */

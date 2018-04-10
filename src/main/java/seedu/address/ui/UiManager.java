@@ -52,6 +52,7 @@ public class UiManager extends ComponentManager implements Ui {
         primaryStage.getIcons().add(getImage(ICON_APPLICATION));
 
         try {
+          //  /*
             mainWindow = new MainWindow(primaryStage, config, prefs, logic);
             mainWindow.init();
             mainWindow.show(); //This should be called before creating other UI parts
@@ -86,8 +87,13 @@ public class UiManager extends ComponentManager implements Ui {
     @Override
     public void stop() {
         prefs.updateLastUsedGuiSetting(mainWindow.getCurrentGuiSetting());
+        ///*
         mainWindow.hide();
         mainWindow.releaseResources();
+        //*/
+        //loginScreen.hide();
+        //loginScreen.releaseResources();
+
     }
 
     private void showFileOperationAlertAndWait(String description, String details, Throwable cause) {
