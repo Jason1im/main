@@ -76,7 +76,25 @@ public class MainWindow extends UiPart<Stage> {
     private StackPane displayPanelPlaceholder;
 
     public MainWindow(Stage primaryStage, Config config, UserPrefs prefs, Logic logic) {
-        super(FXML_0, primaryStage);
+        super(FXML, primaryStage);
+
+        // Set dependencies
+        this.primaryStage = primaryStage;
+        this.logic = logic;
+        this.config = config;
+        this.prefs = prefs;
+
+        // Configure the UI
+        setTitle(config.getAppTitle());
+        setWindowDefaultSize(prefs);
+
+        setAccelerators();
+        registerAsAnEventHandler(this);
+    }
+
+    // constructor for test purpose
+    public MainWindow(Stage primaryStage, Config config, UserPrefs prefs, Logic logic, int i) {
+        super(FXML, primaryStage);
 
         // Set dependencies
         this.primaryStage = primaryStage;
@@ -157,6 +175,7 @@ public class MainWindow extends UiPart<Stage> {
         detailsPanel.addContactDetailsDisplayPanel();
         detailsPanel.addCalendarPanel(logic.getAppointmentList());
         detailsPanel.addEmailPanel();
+        detailsPanel.addGoogleLoginPanel();
 
         personListPanel = new PersonListPanel(logic.getFilteredPersonList());
 
@@ -178,7 +197,6 @@ public class MainWindow extends UiPart<Stage> {
     void fillInnerParts(boolean hasLogin) {
         
         if (hasLogin) {
-
             detailsPlaceholder.getChildren().add(detailsPanel.getRoot());
 
             personListPanelPlaceholder.getChildren().add(personListPanel.getRoot());
@@ -259,6 +277,7 @@ public class MainWindow extends UiPart<Stage> {
             fillInnerParts(true);
         } else {
             loadFxmlFile(getFxmlFileUrl(FXML_0), primaryStage);
+            fillInnerParts(false);
         }
     }
 
