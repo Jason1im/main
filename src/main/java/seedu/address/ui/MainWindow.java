@@ -108,24 +108,6 @@ public class MainWindow extends UiPart<Stage> {
         registerAsAnEventHandler(this);
     }
 
-    // constructor for test purpose
-    public MainWindow(Stage primaryStage, Config config, UserPrefs prefs, Logic logic, int i) {
-        super(FXML, primaryStage);
-
-        // Set dependencies
-        this.primaryStage = primaryStage;
-        this.logic = logic;
-        this.config = config;
-        this.prefs = prefs;
-
-        // Configure the UI
-        setTitle(config.getAppTitle());
-        setWindowDefaultSize(prefs);
-
-        setAccelerators();
-        registerAsAnEventHandler(this);
-    }
-
     public Stage getPrimaryStage() {
         return primaryStage;
     }
