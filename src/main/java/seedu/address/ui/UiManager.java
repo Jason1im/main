@@ -17,6 +17,7 @@ import seedu.address.commons.events.storage.DataSavingExceptionEvent;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.Logic;
 import seedu.address.model.UserPrefs;
+import seedu.address.model.Model;
 
 /**
  * The manager of the UI component.
@@ -52,10 +53,10 @@ public class UiManager extends ComponentManager implements Ui {
         primaryStage.getIcons().add(getImage(ICON_APPLICATION));
 
         try {
+          //  /*
             mainWindow = new MainWindow(primaryStage, config, prefs, logic);
             mainWindow.show(); //This should be called before creating other UI parts
-            mainWindow.fillInnerParts();
-
+            mainWindow.fillInnerParts(false);
         } catch (Throwable e) {
             logger.severe(StringUtil.getDetails(e));
             showFatalErrorDialogAndShutdown("Fatal error during initializing", e);
@@ -65,8 +66,13 @@ public class UiManager extends ComponentManager implements Ui {
     @Override
     public void stop() {
         prefs.updateLastUsedGuiSetting(mainWindow.getCurrentGuiSetting());
+        ///*
         mainWindow.hide();
         mainWindow.releaseResources();
+        //*/
+        //loginScreen.hide();
+        //loginScreen.releaseResources();
+
     }
 
     private void showFileOperationAlertAndWait(String description, String details, Throwable cause) {
