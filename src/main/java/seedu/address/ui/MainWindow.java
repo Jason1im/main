@@ -44,6 +44,9 @@ public class MainWindow extends UiPart<Stage> {
     private DetailsPanel detailsPanel;
     private JobListPanel jobListPanel;
     private DisplayPanel displayPanel;
+    private ResultDisplay resultDisplay;
+    private StatusBarFooter statusBarFooter;
+    private CommandBox commandBox;
 
     @FXML
     private StackPane browserPlaceholder;
@@ -73,7 +76,25 @@ public class MainWindow extends UiPart<Stage> {
     private StackPane displayPanelPlaceholder;
 
     public MainWindow(Stage primaryStage, Config config, UserPrefs prefs, Logic logic) {
-        super(FXML_0, primaryStage);
+        super(FXML, primaryStage);
+
+        // Set dependencies
+        this.primaryStage = primaryStage;
+        this.logic = logic;
+        this.config = config;
+        this.prefs = prefs;
+
+        // Configure the UI
+        setTitle(config.getAppTitle());
+        setWindowDefaultSize(prefs);
+
+        setAccelerators();
+        registerAsAnEventHandler(this);
+    }
+
+    // constructor for test purpose
+    public MainWindow(Stage primaryStage, Config config, UserPrefs prefs, Logic logic, int i) {
+        super(FXML, primaryStage);
 
         // Set dependencies
         this.primaryStage = primaryStage;
@@ -128,36 +149,49 @@ public class MainWindow extends UiPart<Stage> {
     }
 
     /**
+     * Initialize all the Panels in Main Window
+     */
+    void init() {
+        detailsPanel = new DetailsPanel();
+        detailsPanel.addBrowserPanel();
+        detailsPanel.addContactDetailsDisplayPanel();
+        detailsPanel.addCalendarPanel(logic.getAppointmentList());
+        detailsPanel.addEmailPanel();
+
+        personListPanel = new PersonListPanel(logic.getFilteredPersonList());
+
+        jobListPanel = new JobListPanel(logic.getFilteredJobList());
+
+        displayPanel = new DisplayPanel();
+
+        statusBarFooter = new StatusBarFooter(prefs.getAddressBookFilePath());
+
+        resultDisplay = new ResultDisplay();
+
+        commandBox = new CommandBox(logic);
+
+    }
+
+    /**
      * Fills up all the placeholders of this window.
      */
     void fillInnerParts(boolean hasLogin) {
         
         if (hasLogin) {
-            detailsPanel = new DetailsPanel();
-            detailsPanel.addBrowserPanel();
-            detailsPanel.addContactDetailsDisplayPanel();
-            detailsPanel.addCalendarPanel(logic.getAppointmentList());
-            detailsPanel.addEmailPanel();
+
             detailsPlaceholder.getChildren().add(detailsPanel.getRoot());
 
-            personListPanel = new PersonListPanel(logic.getFilteredPersonList());
             personListPanelPlaceholder.getChildren().add(personListPanel.getRoot());
 
-            jobListPanel = new JobListPanel(logic.getFilteredJobList());
             jobListPanelPlaceholder.getChildren().add(jobListPanel.getRoot());
 
-            StatusBarFooter statusBarFooter = new StatusBarFooter(prefs.getAddressBookFilePath());
             statusbarPlaceholder.getChildren().add(statusBarFooter.getRoot());
         } else {
-            displayPanel = new DisplayPanel();
             displayPanelPlaceholder.getChildren().add(displayPanel.getRoot());
-
         }
 
-        ResultDisplay resultDisplay = new ResultDisplay();
         resultDisplayPlaceholder.getChildren().add(resultDisplay.getRoot());
 
-        CommandBox commandBox = new CommandBox(logic);
         commandBoxPlaceholder.getChildren().add(commandBox.getRoot());
     }
 
@@ -225,6 +259,7 @@ public class MainWindow extends UiPart<Stage> {
             fillInnerParts(true);
         } else {
             loadFxmlFile(getFxmlFileUrl(FXML_0), primaryStage);
+            fillInnerParts(false);
         }
     }
 
