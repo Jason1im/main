@@ -160,11 +160,11 @@ public class AddressBookParser {
         case JobDeleteCommand.COMMAND_WORD:
             return new JobDeleteCommandParser().parse(arguments);
 
-        case JobListCommand.COMMAND_WORD:
-            return new JobListCommand();
-
         case JobFindCommand.COMMAND_WORD:
             return new JobFindCommandParser().parse(arguments);
+
+        case JobListCommand.COMMAND_WORD:
+            return new JobListCommand();
 
         case AddAppointmentCommand.COMMAND_WORD:
             return new AddAppointmentCommandParser().parse(arguments);
