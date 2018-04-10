@@ -148,6 +148,7 @@ public class MainWindow extends UiPart<Stage> {
         });
     }
 
+    //@@author Jason1im
     /**
      * Initialize all the Panels in Main Window
      */
@@ -173,6 +174,7 @@ public class MainWindow extends UiPart<Stage> {
 
     }
 
+    //@@author
     /**
      * Fills up all the placeholders of this window.
      */
