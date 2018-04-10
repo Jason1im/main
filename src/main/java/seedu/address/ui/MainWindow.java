@@ -48,7 +48,6 @@ public class MainWindow extends UiPart<Stage> {
     private StatusBarFooter statusBarFooter;
     private CommandBox commandBox;
 
-
     @FXML
     private StackPane browserPlaceholder;
 
@@ -77,7 +76,7 @@ public class MainWindow extends UiPart<Stage> {
     private StackPane displayPanelPlaceholder;
 
     public MainWindow(Stage primaryStage, Config config, UserPrefs prefs, Logic logic) {
-        super(FXML_0, primaryStage);
+        super(FXML, primaryStage);
 
         // Set dependencies
         this.primaryStage = primaryStage;
@@ -158,6 +157,7 @@ public class MainWindow extends UiPart<Stage> {
         detailsPanel.addContactDetailsDisplayPanel();
         detailsPanel.addCalendarPanel(logic.getAppointmentList());
         detailsPanel.addEmailPanel();
+        detailsPanel.addGoogleLoginPanel();
 
         personListPanel = new PersonListPanel(logic.getFilteredPersonList());
 
@@ -179,7 +179,6 @@ public class MainWindow extends UiPart<Stage> {
     void fillInnerParts(boolean hasLogin) {
 
         if (hasLogin) {
-
             detailsPlaceholder.getChildren().add(detailsPanel.getRoot());
 
             personListPanelPlaceholder.getChildren().add(personListPanel.getRoot());
@@ -260,6 +259,7 @@ public class MainWindow extends UiPart<Stage> {
             fillInnerParts(true);
         } else {
             loadFxmlFile(getFxmlFileUrl(FXML_0), primaryStage);
+            fillInnerParts(false);
         }
     }
 
