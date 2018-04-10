@@ -76,7 +76,7 @@ public class MainWindow extends UiPart<Stage> {
     private StackPane displayPanelPlaceholder;
 
     public MainWindow(Stage primaryStage, Config config, UserPrefs prefs, Logic logic) {
-        super(FXML, primaryStage);
+        super(FXML_0, primaryStage);
 
         // Set dependencies
         this.primaryStage = primaryStage;
