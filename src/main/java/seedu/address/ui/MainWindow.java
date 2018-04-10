@@ -47,7 +47,6 @@ public class MainWindow extends UiPart<Stage> {
     private StatusBarFooter statusBarFooter;
     private CommandBox commandBox;
 
-
     @FXML
     private StackPane browserPlaceholder;
 
@@ -76,7 +75,7 @@ public class MainWindow extends UiPart<Stage> {
     private StackPane displayPanelPlaceholder;
 
     public MainWindow(Stage primaryStage, Config config, UserPrefs prefs, Logic logic) {
-        super(FXML_0, primaryStage);
+        super(FXML, primaryStage);
 
         // Set dependencies
         this.primaryStage = primaryStage;
@@ -264,6 +263,7 @@ public class MainWindow extends UiPart<Stage> {
             fillInnerParts(true);
         } else {
             loadFxmlFile(getFxmlFileUrl(FXML_0), primaryStage);
+            fillInnerParts(false);
         }
     }
 
