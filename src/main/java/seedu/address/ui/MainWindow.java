@@ -177,11 +177,6 @@ public class MainWindow extends UiPart<Stage> {
      * Fills up all the placeholders of this window.
      */
     void fillInnerParts(boolean hasLogin) {
-<<<<<<< HEAD
-        
-=======
-
->>>>>>> 3e00ecfb6693ff6d76a49ef76296f63624e61f00
         if (hasLogin) {
             detailsPlaceholder.getChildren().add(detailsPanel.getRoot());
 
