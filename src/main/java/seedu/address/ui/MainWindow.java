@@ -10,15 +10,18 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextInputControl;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.Region;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import seedu.address.commons.core.Config;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.events.ui.ExitAppRequestEvent;
+import seedu.address.commons.events.ui.LoginEvent;
 import seedu.address.commons.events.ui.ShowHelpRequestEvent;
 import seedu.address.logic.Logic;
 import seedu.address.model.UserPrefs;
+import seedu.address.model.Model;
 
 /**
  * The Main Window. Provides the basic application layout containing
@@ -27,11 +30,13 @@ import seedu.address.model.UserPrefs;
 public class MainWindow extends UiPart<Stage> {
 
     private static final String FXML = "MainWindow.fxml";
+    private static final String FXML_0 = "LoginWindow.fxml";
 
     private final Logger logger = LogsCenter.getLogger(this.getClass());
 
     private Stage primaryStage;
     private Logic logic;
+    private Model model;
 
     // Independent Ui parts residing in this Ui container
     private PersonListPanel personListPanel;
@@ -39,6 +44,7 @@ public class MainWindow extends UiPart<Stage> {
     private UserPrefs prefs;
     private DetailsPanel detailsPanel;
     private JobListPanel jobListPanel;
+    private DisplayPanel displayPanel;
 
     @FXML
     private StackPane browserPlaceholder;
@@ -64,8 +70,11 @@ public class MainWindow extends UiPart<Stage> {
     @FXML
     private StackPane statusbarPlaceholder;
 
+    @FXML
+    private StackPane displayPanelPlaceholder;
+
     public MainWindow(Stage primaryStage, Config config, UserPrefs prefs, Logic logic) {
-        super(FXML, primaryStage);
+        super(FXML_0, primaryStage);
 
         // Set dependencies
         this.primaryStage = primaryStage;
@@ -122,27 +131,32 @@ public class MainWindow extends UiPart<Stage> {
     /**
      * Fills up all the placeholders of this window.
      */
-    void fillInnerParts() {
+    void fillInnerParts(boolean hasLogin) {
+        
+        if (hasLogin) {
+            detailsPanel = new DetailsPanel();
+            detailsPanel.addBrowserPanel();
+            detailsPanel.addContactDetailsDisplayPanel();
+            detailsPanel.addCalendarPanel(logic.getAppointmentList());
+            detailsPanel.addEmailPanel();
+            detailsPlaceholder.getChildren().add(detailsPanel.getRoot());
 
-        detailsPanel = new DetailsPanel();
-        detailsPanel.addBrowserPanel();
-        detailsPanel.addContactDetailsDisplayPanel();
-        detailsPanel.addCalendarPanel(logic.getAppointmentList());
-        detailsPanel.addEmailPanel();
-        detailsPanel.addGoogleLoginPanel();
-        detailsPlaceholder.getChildren().add(detailsPanel.getRoot());
+            personListPanel = new PersonListPanel(logic.getFilteredPersonList());
+            personListPanelPlaceholder.getChildren().add(personListPanel.getRoot());
 
-        personListPanel = new PersonListPanel(logic.getFilteredPersonList());
-        personListPanelPlaceholder.getChildren().add(personListPanel.getRoot());
+            jobListPanel = new JobListPanel(logic.getFilteredJobList());
+            jobListPanelPlaceholder.getChildren().add(jobListPanel.getRoot());
+
+            StatusBarFooter statusBarFooter = new StatusBarFooter(prefs.getAddressBookFilePath());
+            statusbarPlaceholder.getChildren().add(statusBarFooter.getRoot());
+        }
+
+
+        displayPanel = new DisplayPanel();
+        displayPanelPlaceholder.getChildren().add(displayPanel.getRoot());
 
         ResultDisplay resultDisplay = new ResultDisplay();
         resultDisplayPlaceholder.getChildren().add(resultDisplay.getRoot());
-
-        jobListPanel = new JobListPanel(logic.getFilteredJobList());
-        jobListPanelPlaceholder.getChildren().add(jobListPanel.getRoot());
-
-        StatusBarFooter statusBarFooter = new StatusBarFooter(prefs.getAddressBookFilePath());
-        statusbarPlaceholder.getChildren().add(statusBarFooter.getRoot());
 
         CommandBox commandBox = new CommandBox(logic);
         commandBoxPlaceholder.getChildren().add(commandBox.getRoot());
@@ -205,6 +219,24 @@ public class MainWindow extends UiPart<Stage> {
         detailsPanel.releaseResources();
     }
 
+    //@@author Jason1im
+    private void switchView(boolean isLogin) {
+        if (isLogin) {
+            loadFxmlFile(getFxmlFileUrl(FXML), primaryStage);
+            fillInnerParts(true);
+        } else {
+            loadFxmlFile(getFxmlFileUrl(FXML_0), primaryStage);
+            fillInnerParts(false);
+        }
+    }
+
+    @Subscribe
+    private void handleLoginEvent(LoginEvent event) {
+        logger.info(LogsCenter.getEventHandlingLogMessage(event));
+        switchView(event.isLogin);
+    }
+
+    //@@author
     @Subscribe
     private void handleShowHelpEvent(ShowHelpRequestEvent event) {
         logger.info(LogsCenter.getEventHandlingLogMessage(event));
