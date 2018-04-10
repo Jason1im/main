@@ -20,7 +20,6 @@ import seedu.address.commons.events.ui.LoginEvent;
 import seedu.address.commons.events.ui.ShowHelpRequestEvent;
 import seedu.address.logic.Logic;
 import seedu.address.model.UserPrefs;
-import seedu.address.model.Model;
 
 /**
  * The Main Window. Provides the basic application layout containing
@@ -35,7 +34,6 @@ public class MainWindow extends UiPart<Stage> {
 
     private Stage primaryStage;
     private Logic logic;
-    private Model model;
 
     // Independent Ui parts residing in this Ui container
     private PersonListPanel personListPanel;
@@ -273,6 +271,10 @@ public class MainWindow extends UiPart<Stage> {
     }
 
     //@@author Jason1im
+
+    /**
+     * Switches the fxml file loaded onto primaryStage
+     */
     private void switchView(boolean isLogin) {
         if (isLogin) {
             loadFxmlFile(getFxmlFileUrl(FXML), primaryStage);
