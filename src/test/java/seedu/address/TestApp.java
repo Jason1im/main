@@ -19,6 +19,7 @@ import seedu.address.model.UserPrefs;
 import seedu.address.storage.UserPrefsStorage;
 import seedu.address.storage.XmlSerializableAddressBook;
 import seedu.address.testutil.TestUtil;
+import seedu.address.ui.testutil.UiForTest;
 import systemtests.ModelHelper;
 
 /**
@@ -97,7 +98,18 @@ public class TestApp extends MainApp {
         Model copy = new ModelManager((model.getAddressBook()), new UserPrefs());
         ModelHelper.setFilteredPersonList(copy, model.getFilteredPersonList());
         ModelHelper.setFilteredJobList(copy, model.getFilteredJobList());
+        setModel(copy);
         return copy;
+    }
+
+    void setModel(Model model) {
+        try {
+            model.register("John", "Doe123");
+            model.login("John", "Doe123");
+
+        } catch (Exception e) {
+
+        }
     }
 
     @Override
