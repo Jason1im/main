@@ -45,12 +45,10 @@ public class MainWindow extends UiPart<Stage> {
     private DetailsPanel detailsPanel;
     private JobListPanel jobListPanel;
     private DisplayPanel displayPanel;
-<<<<<<< 9b1856397cad3ae67f85779742697e3f84a2d536
     private ResultDisplay resultDisplay;
     private StatusBarFooter statusBarFooter;
     private CommandBox commandBox;
-=======
->>>>>>> resolve conflict
+
 
     @FXML
     private StackPane browserPlaceholder;
