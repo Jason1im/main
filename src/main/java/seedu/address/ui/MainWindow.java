@@ -10,6 +10,7 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextInputControl;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.Region;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import seedu.address.commons.core.Config;
@@ -43,9 +44,12 @@ public class MainWindow extends UiPart<Stage> {
     private DetailsPanel detailsPanel;
     private JobListPanel jobListPanel;
     private DisplayPanel displayPanel;
+<<<<<<< 9b1856397cad3ae67f85779742697e3f84a2d536
     private ResultDisplay resultDisplay;
     private StatusBarFooter statusBarFooter;
     private CommandBox commandBox;
+=======
+>>>>>>> resolve conflict
 
     @FXML
     private StackPane browserPlaceholder;
@@ -75,7 +79,7 @@ public class MainWindow extends UiPart<Stage> {
     private StackPane displayPanelPlaceholder;
 
     public MainWindow(Stage primaryStage, Config config, UserPrefs prefs, Logic logic) {
-        super(FXML, primaryStage);
+        super(FXML_0, primaryStage);
 
         // Set dependencies
         this.primaryStage = primaryStage;
