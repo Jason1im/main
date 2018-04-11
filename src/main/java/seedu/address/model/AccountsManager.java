@@ -17,12 +17,12 @@ import seedu.address.model.exception.InvalidUsernameException;
 /**
  * Represents a database of registered user accounts
  */
-public class AccountsManager implements ReadOnlyAccountsManager {
-    private ObservableList<Account> accountList;
+public class AccountsManager {
+    private Account account;
 
 
     public AccountsManager() {
-        accountList = FXCollections.observableArrayList();
+        account = new Account();
     }
 
     public boolean checkUsername(String username, Account account) {
@@ -48,6 +48,19 @@ public class AccountsManager implements ReadOnlyAccountsManager {
         }
         Account newAccount = new Account(inputUsername, inputPassword);
         accountList.add(newAccount);
+    }
+
+    /**
+     * Updates the username of the account.
+     * @throws DuplicateUsernameException if the username is already in use
+     */
+    public void updateUsername(String inputUsername) throws DuplicateUsernameException {
+        requireAllNonNull(inputUsername);
+        if (checkUsername(inputUsername, account)) {
+            throw new DuplicateUsernameException();
+        } else {
+            account.updateUsername(inputUsername);
+        }
     }
 
     /**

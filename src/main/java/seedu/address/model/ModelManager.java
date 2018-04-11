@@ -143,7 +143,7 @@ public class ModelManager extends ComponentManager implements Model {
 
     //@@author Jason1im
     @Override
-    public ReadOnlyAccountsManager getAccountsManager() {
+    public AccountsManager getAccountsManager() {
         return accountsManager;
     }
 

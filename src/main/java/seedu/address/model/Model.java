@@ -84,7 +84,7 @@ public interface Model {
     /**
      * Returns AccountsManager.
      */
-    ReadOnlyAccountsManager getAccountsManager();
+    AccountsManager getAccountsManager();
 
     /**
      * Logs the user into contactHeRo.
