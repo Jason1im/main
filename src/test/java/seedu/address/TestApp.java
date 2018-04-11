@@ -102,7 +102,7 @@ public class TestApp extends MainApp {
 
     @Override
     public void start(Stage primaryStage) {
-        ui.startTest(primaryStage);
+        ui.start(primaryStage, 1);
     }
 
     public static void main(String[] args) {

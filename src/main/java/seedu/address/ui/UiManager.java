@@ -45,38 +45,17 @@ public class UiManager extends ComponentManager implements Ui {
     }
 
     @Override
-    public void start(Stage primaryStage) {
+    public void start(Stage primaryStage, int type) {
         logger.info("Starting UI...");
 
         //Set the application icon.
         primaryStage.getIcons().add(getImage(ICON_APPLICATION));
 
         try {
-            mainWindow = new MainWindow(primaryStage, config, prefs, logic);
-            mainWindow.init();
+            mainWindow = new MainWindow(primaryStage, config, prefs, logic, type);
             mainWindow.show(); //This should be called before creating other UI parts
-            mainWindow.fillInnerParts(false);
-        } catch (Throwable e) {
-            logger.severe(StringUtil.getDetails(e));
-            showFatalErrorDialogAndShutdown("Fatal error during initializing", e);
-        }
-    }
-
-    /**
-     * This method is for Testing
-     */
-    @Override
-    public void startTest(Stage primaryStage) {
-        logger.info("Starting UI...");
-
-        //Set the application icon.
-        primaryStage.getIcons().add(getImage(ICON_APPLICATION));
-
-        try {
-            mainWindow = new MainWindow(primaryStage, config, prefs, logic, 1);
             mainWindow.init();
-            mainWindow.show(); //This should be called before creating other UI parts
-            mainWindow.fillInnerParts(true);
+            mainWindow.fillInnerParts(type == 1);
         } catch (Throwable e) {
             logger.severe(StringUtil.getDetails(e));
             showFatalErrorDialogAndShutdown("Fatal error during initializing", e);
