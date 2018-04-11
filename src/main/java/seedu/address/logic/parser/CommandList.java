@@ -10,7 +10,9 @@ import seedu.address.logic.commands.ExitCommand;
 import seedu.address.logic.commands.GoogleLoginCommand;
 import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.HistoryCommand;
+import seedu.address.logic.commands.LoginCommand;
 import seedu.address.logic.commands.RedoCommand;
+import seedu.address.logic.commands.SignupCommand;
 import seedu.address.logic.commands.UndoCommand;
 import seedu.address.logic.commands.appointment.AddAppointmentCommand;
 import seedu.address.logic.commands.appointment.CalendarCommand;
@@ -67,6 +69,7 @@ public class CommandList {
         commandList.add(HistoryCommand.COMMAND_WORD);
         commandList.add(LinkedInCommand.COMMAND_WORD);
         commandList.add(ListCommand.COMMAND_WORD);
+        commandList.add(LoginCommand.COMMAND_WORD);
         commandList.add(JobListCommand.COMMAND_WORD);
         commandList.add(JobMatchCommand.COMMAND_WORD);
         commandList.add(RedoCommand.COMMAND_WORD);
@@ -75,6 +78,7 @@ public class CommandList {
         commandList.add(MonthCommand.COMMAND_WORD);
         commandList.add(RedoCommand.COMMAND_WORD);
         commandList.add(SelectCommand.COMMAND_WORD);
+        commandList.add(SignupCommand.COMMAND_WORD);
         commandList.add(UndoCommand.COMMAND_WORD);
         commandList.add(WeekCommand.COMMAND_WORD);
         commandList.add(YearCommand.COMMAND_WORD);
@@ -112,7 +116,13 @@ public class CommandList {
         case AddAppointmentCommand.COMMAND_WORD:
             return AddAppointmentCommand.COMMAND_SYNTAX;
 
-        default:
+        case SignupCommand.COMMAND_WORD:
+            return SignupCommand.COMMAND_SYNTAX;
+
+        case LoginCommand.COMMAND_WORD:
+            return LoginCommand.COMMAND_SYNTAX;
+
+            default:
             return matchedCommandWord;
         }
     }
