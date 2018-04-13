@@ -28,7 +28,6 @@ import seedu.address.logic.commands.HistoryCommand;
 import seedu.address.logic.commands.LoginCommand;
 import seedu.address.logic.commands.LogoutCommand;
 import seedu.address.logic.commands.RedoCommand;
-import seedu.address.logic.commands.SignupCommand;
 import seedu.address.logic.commands.UndoCommand;
 import seedu.address.logic.commands.appointment.AddAppointmentCommand;
 import seedu.address.logic.commands.appointment.CalendarCommand;

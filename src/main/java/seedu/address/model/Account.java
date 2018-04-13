@@ -6,7 +6,7 @@ package seedu.address.model;
  */
 public final class Account {
     private final String DEFAULT_USERNAME = "John";
-    private final String DEFAULT_PASSWORD = "Doe123";
+    private final String DEFAULT_PASSWORD = "doe123";
 
     private String username;
     private String password;
@@ -37,6 +37,8 @@ public final class Account {
     public void updatePassword(String newPassword) {
         password = newPassword;
     }
+
+    public void resetPassword() { password = DEFAULT_PASSWORD; }
 
     @Override
     public boolean equals(Object other) {

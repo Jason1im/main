@@ -18,50 +18,49 @@ import seedu.address.model.exception.InvalidUsernameException;
  * Represents a database of registered user accounts
  */
 public class AccountsManager {
-    private Account account;
+    private final Account account;
 
 
     public AccountsManager() {
         account = new Account();
     }
 
-    public boolean checkUsername(String username, Account account) {
+    private boolean checkUsername(String username, Account account) {
         return account.getUsername().equals(username);
     }
 
-    public boolean checkPassword(String password, Account account) {
+    private boolean checkPassword(String password, Account account) {
         return account.getPassword().equals(password);
     }
 
     /**
-    * adds a new account to the list of registered accounts.
-    * @throws DuplicateUsernameException if the username is already used
-    */
-    public void register(String inputUsername, String inputPassword) throws DuplicateUsernameException {
-        requireAllNonNull(inputUsername, inputPassword);
-        if (!accountList.isEmpty()) {
-            for (Account acc : accountList) {
-                if (checkUsername(inputUsername, acc)) {
-                    throw new DuplicateUsernameException();
-                }
-            }
-        }
-        Account newAccount = new Account(inputUsername, inputPassword);
-        accountList.add(newAccount);
-    }
-
-    /**
      * Updates the username of the account.
-     * @throws DuplicateUsernameException if the username is already in use
+     * @throws InvalidUsernameException if the username is already in use
      */
-    public void updateUsername(String inputUsername) throws DuplicateUsernameException {
+    public void updateUsername(String inputUsername) throws InvalidUsernameException {
         requireAllNonNull(inputUsername);
         if (checkUsername(inputUsername, account)) {
-            throw new DuplicateUsernameException();
+            throw new InvalidUsernameException();
         } else {
             account.updateUsername(inputUsername);
         }
     }
+
+    /**
+     * Updates the password of the account.
+     * @throws InvalidPasswordException
+     */
+    public void updatePassword(String oldPassword, String newPassword)
+            throws InvalidPasswordException {
+        requireAllNonNull(oldPassword, newPassword);
+        if (!checkPassword(oldPassword, account)) {
+            throw new InvalidPasswordException();
+        } else {
+            account.updatePassword(newPassword);
+        }
+    }
+
+    public void resetPassword() { account.resetPassword(); }
 
     /**
      * Checks for validity of username and password.
@@ -71,41 +70,26 @@ public class AccountsManager {
      */
     public Account login(String inputUsername, String inputPassword)
             throws InvalidUsernameException, InvalidPasswordException {
-        requireAllNonNull(inputUsername, inputPassword);
-        Account result = null;
-        boolean isValidUsername = false;
-        for (Account acc : accountList) {
-            if (checkUsername(inputUsername, acc)) {
-                if (checkPassword(inputPassword, acc)) {
-                    isValidUsername = true;
-                    result = acc;
-                } else {
-                    throw new InvalidPasswordException();
-                }
-            }
-        }
-        if (isValidUsername) {
-            return result;
-        } else {
-            throw new InvalidUsernameException();
-        }
-    }
 
-    @Override
-    public ObservableList<Account> getAccountList() {
-        assert CollectionUtil.elementsAreUnique(accountList);
-        return FXCollections.unmodifiableObservableList(accountList);
+        requireAllNonNull(inputUsername, inputPassword);
+        if (!checkUsername(inputUsername, account)) {
+            throw new InvalidUsernameException();
+        } else if (!checkPassword(inputPassword, account)) {
+            throw new InvalidPasswordException();
+        } else {
+            return account;
+        }
     }
 
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
                 || (other instanceof AccountsManager // instanceof handles nulls
-                && this.accountList.equals(((AccountsManager) other).accountList));
+                && this.account.equals(((AccountsManager) other).account));
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(accountList);
+        return Objects.hash(account);
     }
 }
