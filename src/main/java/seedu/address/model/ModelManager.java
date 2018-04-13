@@ -189,6 +189,9 @@ public class ModelManager extends ComponentManager implements Model {
         user = user.ofNullable(account);
     }
 
+    @Override
+    public boolean isLoggedIn() { return user.isPresent(); }
+
     //@@author trafalgarandre
     @Override
     public synchronized void addAppointment(Appointment appointment) throws DuplicateAppointmentException {
