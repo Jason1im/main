@@ -13,6 +13,7 @@ import seedu.address.logic.commands.HistoryCommand;
 import seedu.address.logic.commands.LoginCommand;
 import seedu.address.logic.commands.RedoCommand;
 import seedu.address.logic.commands.UndoCommand;
+import seedu.address.logic.commands.UpdatePasswordCommand;
 import seedu.address.logic.commands.appointment.AddAppointmentCommand;
 import seedu.address.logic.commands.appointment.CalendarCommand;
 import seedu.address.logic.commands.appointment.DateCommand;
@@ -113,7 +114,6 @@ public class CommandList {
             return JobFindCommand.COMMAND_SYNTAX;
 
         case AddAppointmentCommand.COMMAND_WORD:
-
 
         case UpdatePasswordCommand.COMMAND_WORD:
             return UpdatePasswordCommand.COMMAND_SYNTAX;

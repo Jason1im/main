@@ -1,14 +1,17 @@
 package seedu.address.logic.commands;
 
-import seedu.address.commons.core.Messages;
-import seedu.address.logic.commands.exceptions.CommandException;
-import seedu.address.model.exception.InvalidPasswordException;
-
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NEW_PASSWORD;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PASSWORD;
 
+import seedu.address.commons.core.Messages;
+import seedu.address.logic.commands.exceptions.CommandException;
+import seedu.address.model.exception.InvalidPasswordException;
+
+/**
+ * Change the password of the user account.
+ */
 public class UpdatePasswordCommand extends Command {
     public static final String COMMAND_WORD = "updatepassword";
     public static final String COMMAND_SYNTAX = COMMAND_WORD + " "
@@ -17,7 +20,7 @@ public class UpdatePasswordCommand extends Command {
     public static final String MESSAGE_USAGE = COMMAND_WORD + "Updates the user account password."
             + "Parameters: "
             + PREFIX_PASSWORD + "PASSWORD "
-            + PREFIX_NEW_PASSWORD + "PASSWORD\n"
+            + PREFIX_NEW_PASSWORD + "NEW_PASSWORD\n"
             + "Example: " + COMMAND_WORD + " "
             + PREFIX_PASSWORD + "Doe123 "
             + PREFIX_NEW_PASSWORD + "doe456";
@@ -26,10 +29,10 @@ public class UpdatePasswordCommand extends Command {
     private final String oldPassword;
     private final String newPassword;
 
-    public UpdatePasswordCommand(String inputPassword_1, String inputPassword_2) {
-        requireAllNonNull(inputPassword_1, inputPassword_2);
-        this.oldPassword = inputPassword_1;
-        this.newPassword = inputPassword_2;
+    public UpdatePasswordCommand(String oldPassword, String newPassword) {
+        requireAllNonNull(oldPassword, newPassword);
+        this.oldPassword = oldPassword;
+        this.newPassword = newPassword;
     }
 
     @Override

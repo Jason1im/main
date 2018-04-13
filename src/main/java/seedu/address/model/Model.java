@@ -97,11 +97,11 @@ public interface Model {
 
     /**
      * Changes the password of the user account
-     * @param password_1
-     * @param password_2
+     * @param oldPassword
+     * @param newPassword
      * @throws InvalidPasswordException if password_1 is invalid.
      */
-    void updatePassword(String password_1, String password_2)
+    void updatePassword(String oldPassword, String newPassword)
             throws InvalidPasswordException;
 
     /**

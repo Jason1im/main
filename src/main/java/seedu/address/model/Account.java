@@ -5,8 +5,8 @@ package seedu.address.model;
  * Represents a user account.
  */
 public final class Account {
-    private final String DEFAULT_USERNAME = "John";
-    private final String DEFAULT_PASSWORD = "doe123";
+    private static final String DEFAULT_USERNAME = "John";
+    private static final String DEFAULT_PASSWORD = "doe123";
 
     private String username;
     private String password;
@@ -38,7 +38,9 @@ public final class Account {
         password = newPassword;
     }
 
-    public void resetPassword() { password = DEFAULT_PASSWORD; }
+    public void resetPassword() {
+        password = DEFAULT_PASSWORD;
+    }
 
     @Override
     public boolean equals(Object other) {
