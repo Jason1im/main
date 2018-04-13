@@ -145,6 +145,12 @@ public class AddCommandTest {
         }
 
         @Override
+        public boolean isLoggedIn() {
+            fail("This method should not be called.");
+            return false;
+        }
+
+        @Override
         public void updateJob(Job target, Job editedJob)
                 throws DuplicateJobException {
             fail("This method should not be called.");
@@ -202,11 +208,6 @@ public class AddCommandTest {
         @Override
         public List<Appointment> getAppointmentList() {
             fail("This method should not be called");
-            return null;
-        }
-
-        public AccountsManager getAccountsManager() {
-            fail("This method should not be called.");
             return null;
         }
 

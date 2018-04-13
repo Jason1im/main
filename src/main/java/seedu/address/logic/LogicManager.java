@@ -48,6 +48,7 @@ public class LogicManager extends ComponentManager implements Logic {
         }
     }
 
+    //@@author Jason1im
     private CommandResult execute(Command command) throws CommandException {
         if (model.isLoggedIn() || isUnrestrictedCommand(command)) {
             return command.execute();
@@ -56,11 +57,15 @@ public class LogicManager extends ComponentManager implements Logic {
         }
     }
 
+    /**
+     * Checks if the command can be executed before logging in.
+     */
     private boolean isUnrestrictedCommand(Command command) {
         return command instanceof LoginCommand || command instanceof HelpCommand
                 || command instanceof ExitCommand;
     }
 
+    //@@author
     @Override
     public ObservableList<Person> getFilteredPersonList() {
         return model.getFilteredPersonList();
