@@ -5,8 +5,8 @@ package seedu.address.model;
  * Represents a user account.
  */
 public final class Account {
-    private static final String DEFAULT_USERNAME = "John";
-    private static final String DEFAULT_PASSWORD = "doe123";
+    private static final String DEFAULT_USERNAME = "Admin";
+    private static final String DEFAULT_PASSWORD = "ad123";
 
     private String username;
     private String password;

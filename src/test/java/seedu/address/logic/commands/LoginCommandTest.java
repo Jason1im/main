@@ -23,8 +23,8 @@ public class LoginCommandTest {
     public ExpectedException thrown = ExpectedException.none();
 
     private Model model;
-    private String username = "John";
-    private String password = "doe123";
+    private String username = "Admin";
+    private String password = "ad123";
 
     @Before
     public void setUp() {
