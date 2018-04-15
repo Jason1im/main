@@ -170,7 +170,7 @@ Examples:
 +
 On running the above command, you should see the following success message: +
   `You have successfully updated your password!`
-// end::intro[]
+// end::login[]
 
 === Managing Persons
 
