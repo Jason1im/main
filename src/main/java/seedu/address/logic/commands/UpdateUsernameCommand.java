@@ -14,7 +14,7 @@ public class UpdateUsernameCommand extends Command {
     public static final String COMMAND_WORD = "updateusername";
     public static final String COMMAND_SYNTAX = COMMAND_WORD + " "
                + PREFIX_USERNAME;
-    public static final String MESSAGE_USAGE = COMMAND_WORD + "Updates the user account username. \n"
+    public static final String MESSAGE_USAGE = COMMAND_WORD + "Updates the username.\n"
             + "Parameters: "
             + PREFIX_USERNAME + "NEW_USERNAME \n"
             + "Example: " + COMMAND_WORD + " "
