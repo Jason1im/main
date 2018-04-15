@@ -3,15 +3,13 @@ package seedu.address.logic.commands;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_USERNAME;
 
-import seedu.address.commons.core.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.exception.BadDataException;
-import seedu.address.model.exception.InvalidUsernameException;
 
 /**
  * Change the username of the user account.
  */
-public class UpdateUsernameCommand extends Command{
+public class UpdateUsernameCommand extends Command {
 
     public static final String COMMAND_WORD = "updateusername";
     public static final String COMMAND_SYNTAX = COMMAND_WORD + " "
