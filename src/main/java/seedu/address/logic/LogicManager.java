@@ -7,15 +7,12 @@ import javafx.collections.ObservableList;
 import seedu.address.commons.core.ComponentManager;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.core.Messages;
-<<<<<<< HEAD
-import seedu.address.logic.commands.*;
-=======
+import seedu.address.logic.commands.ClearHistoryCommand;
 import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.ExitCommand;
 import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.LoginCommand;
->>>>>>> 1b095344b7a1b7f8ee7aa9122deb7fa84840b3ca
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.AddressBookParser;
 import seedu.address.logic.parser.exceptions.ParseException;
