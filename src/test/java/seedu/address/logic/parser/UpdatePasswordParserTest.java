@@ -35,6 +35,5 @@ public class UpdatePasswordParserTest {
         assertParseFailure(parser, PREAMBLE_WHITESPACE + PASSWORD_DESC_USER
                 + PREFIX_NEW_PASSWORD, expectedMessage);
 
-        //
     }
 }
