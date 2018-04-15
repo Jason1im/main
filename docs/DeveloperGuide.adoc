@@ -934,43 +934,7 @@ For storing of the user account data in hard disk, it is handled by the `XmlAcco
 
 **Alternative 2:** Create a separate login window. +
 **Pros**: Login UI can be customized to make it more user friendly for users visually. +
-**Cons**: User do not have to deal with the opening and closing of windows which may slow the app. +
-
-=== Matching jobs implementation
-
-==== Current Implementation
-
-The `JobMatchCommand` uses `PersonSkillContainsKeywordsPredicate` to match person's skills with a job's skills. It accepts the index for the job to match and then uses the `PersonSkillMatchesKeywordsPredicate` to match the job. Below is the code for the execution of the `JobMatchCommand`:
-
-[source, java]
-----
-@Override
-public CommandResult execute() throws CommandException {
-    ...
-    Job jobToMatch = lastShownList.get(targetIndex.getZeroBased());
-
-    model.updateFilteredPersonList(new PersonSkillContainsKeywordsPredicate(
-            CollectionUtil.getSetAsStringList(jobToMatch.getSkills())));
-    // return result
-}
-----
-
-`PersonSkillMatchesKeywordsPredicate` takes in the list of skills of the job as the keywords as the parameter and then checks if the person has any of these skills using the `SkillUtil`. The code for matching the skills is as follows:
-
-[source, java]
-----
-/**
- * Checks if a set of skills contains any of the {@code keywords}.
- */
-public static boolean match(List<String> keywords, Set<Skill> list) {
-    String skillList = getSkillsAsString(list);
-    return keywords.stream()
-            .anyMatch(keyword -> StringUtil.containsWordIgnoreCase(skillList, keyword));
-}
-----
-
-[NOTE]
-To minimize code duplication, we made a utility class `SkillUtil` which is used both by `PersonSkillMatchesKeywordsPredicate` during execution of `matchjob` and `find s/` commands and `JobSkillMatchesKeywordsPredicate` during the execution of `findjob s/` command.
+**Cons**: User do not have to deal with the opening and closing of windows which may slow the app. +\
 // end::loginsystem[]
 
 == Documentation
