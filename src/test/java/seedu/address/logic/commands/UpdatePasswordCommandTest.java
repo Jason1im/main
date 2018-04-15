@@ -45,7 +45,7 @@ public class UpdatePasswordCommandTest {
 
     @Test
     public void execute_updateSuccessful() throws Exception {
-        CommandResult commandResult = getUpdatePasswordCommand(password, "as12", model).execute();
+        CommandResult commandResult = getUpdatePasswordCommand(password, "abc123", model).execute();
         assertEquals(String.format(UpdatePasswordCommand.MESSAGE_SUCCESS, password),
                 commandResult.feedbackToUser);
     }
@@ -61,8 +61,8 @@ public class UpdatePasswordCommandTest {
     @Test
     public void execute_badPassword_throwsCommandException() throws Exception {
         thrown.expect(CommandException.class);
-        thrown.expectMessage(Messages.MESSAGE_INVALID_PASSWORD);
-        UpdatePasswordCommand command = getUpdatePasswordCommand("asd", "...", model);
+        thrown.expectMessage("Bad password. " + Account.MESSAGE_PASSWORD_CONSTRAINTS);
+        UpdatePasswordCommand command = getUpdatePasswordCommand("ad123", "...", model);
         command.execute();
     }
 
