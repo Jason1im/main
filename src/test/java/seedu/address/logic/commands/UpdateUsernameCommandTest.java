@@ -28,7 +28,8 @@ public class UpdateUsernameCommandTest {
 
     @Before
     public void setUp() throws Exception {
-        model = new ModelManager(getTypicalAddressBook(), new UserPrefs());
+        model = new ModelManager(getTypicalAddressBook(), new UserPrefs(),
+                new Account(username, password));
         LoginCommand command = new LoginCommand(username, password);
         command.setData(model, new CommandHistory(), new UndoRedoStack());
         command.execute();
