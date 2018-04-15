@@ -31,7 +31,7 @@ public class LoginCommand extends Command {
                 + "Example: " + COMMAND_WORD + " "
                 + PREFIX_USERNAME + "JohnDoe "
                 + PREFIX_PASSWORD + "98765432 ";
-    public static final String MESSAGE_SUCCESS = "You have successfully login as %1$s";
+    public static final String MESSAGE_SUCCESS = "You have successfully LOGGED IN as %1$s";
     public static final String MESSAGE_MULTIPLE_LOGIN = "You are already logged in.";
 
     private final String username;
